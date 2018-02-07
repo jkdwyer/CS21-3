@@ -33,11 +33,15 @@ public class QSort {
         System.out.println("lowPos: " + lowPos + ", highPos: " + highPos + ", pvPos: " + pvPos);
 
         if (lowPos < highPos) {
-            highPos = partition (lowPos, highPos);
+            pvPos = partition (lowPos, highPos);
+            // highPos = partition (lowPos, highPos);
+
             System.out.println("Lower portion");
-            qs (lowPos, (highPos-1));
+            qs (lowPos, (pvPos-1));
+            // qs (lowPos, (highPos-1));
+
             System.out.println("Higher portion");
-            qs ((pvPos+1), endPos);
+            qs ((pvPos+1), highPos);
             // qs ((highPos+1), endPos);
         }
     }
