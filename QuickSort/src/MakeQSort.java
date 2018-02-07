@@ -17,11 +17,11 @@ public class MakeQSort {
 
         // (2) Test partition results on an instance of QSort.
         // System.out.println("call partition");
-        // qp.partition(qp.getAlq(), 0, qp.getCount());
+        // qp.partition(0, qp.getCount());
 
         // (3) Need a new instance for a fresh test of qs method.
         QSort qp2 = new QSort();
         System.out.println("call qs");
-        qp.qs(qp2.getAlq(), 0, qp2.getCount());
+        qp.qs(0, qp2.getCount());
     }
 }

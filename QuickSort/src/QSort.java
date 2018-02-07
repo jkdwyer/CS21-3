@@ -26,31 +26,31 @@ public class QSort {
         return count;
     }
 
-    public void qs (ArrayList<Integer> alQs, int lowPos, int highPos) {
+    public void qs (int lowPos, int highPos) {
         System.out.println("in QSort.qs()");
         System.out.println("lowPos: " + lowPos + ", highPos: " + highPos);
-        int endPos = (alQs.size() - 1);
+        int endPos = count;
 
         if (lowPos < highPos) {
-            highPos = partition (alQs, lowPos, highPos);
+            highPos = partition (lowPos, highPos);
             System.out.println("Lower portion");
-            qs (alQs, lowPos, (highPos-1));
+            qs (lowPos, (highPos-1));
             System.out.println("Higher portion");
-            qs (alQs, (highPos+1), endPos);
+            qs ((highPos+1), endPos);
         }
     }
 
-    public int partition (ArrayList<Integer> alQp, int lowPos, int highPos) {
+    public int partition (int lowPos, int highPos) {
         System.out.println("in QSort.partition()");
         System.out.println("lowPos: " + lowPos + ", highPos: " + highPos);
-        printAlq(alQp);
+        printAlq();
 
         int pvPos = highPos;
-        int pVal = alQp.get(pvPos);
+        int pVal = alq.get(pvPos);
         int pvPriorPos = (pvPos-1);
-        int pvPriorVal = alQp.get(pvPriorPos);
+        int pvPriorVal = alq.get(pvPriorPos);
         int iPos = lowPos;
-        int iVal = alQp.get(iPos);
+        int iVal = alq.get(iPos);
 
         System.out.println("Initial values - iPos: " + iPos + ", iVal: " + iVal +
                 ", pvPos: " + pvPos + ", pVal: " + pVal +
@@ -60,36 +60,36 @@ public class QSort {
             // test the condition, per j.
             if (iVal > pVal) {
                 // swap i with pvPos-1, and pvPos-1 with pvPos.
-                alQp.set(iPos, pvPriorVal);
-                alQp.set(pvPriorPos, pVal);
-                alQp.set(pvPos, iVal);
+                alq.set(iPos, pvPriorVal);
+                alq.set(pvPriorPos, pVal);
+                alq.set(pvPos, iVal);
                 // pvPos equals the sort-size of the array.
                 pvPos--;
                 pvPriorPos--;
                 // get new values.
-                pvPriorVal = alQp.get(pvPriorPos);
-                iVal = alQp.get(iPos);
+                pvPriorVal = alq.get(pvPriorPos);
+                iVal = alq.get(iPos);
                 // if you swap, don't increment i.
             } else {
                 iPos++;
-                iVal = alQp.get(iPos);
+                iVal = alq.get(iPos);
             }
             System.out.print ("j: " + j + " - ");
-            printAlq(alQp);
+            printAlq();
         }
-        // printAlq(alQp);
+        // printAlq();
         System.out.println("end partition - pvPos: " + pvPos);
         System.out.println();
         return pvPos;
     }
 
-    public void printAlq(ArrayList<Integer> alQs) {
+    public void printAlq() {
         for (int i = 0; i <= count; i++){
             if (i == count) {
-                System.out.println(alQs.get(i));
+                System.out.println(alq.get(i));
                 System.out.println();
             } else {
-                System.out.print(alQs.get(i) + ", ");
+                System.out.print(alq.get(i) + ", ");
             }
         }
     }
