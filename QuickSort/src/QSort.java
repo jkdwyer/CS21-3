@@ -18,39 +18,27 @@ public class QSort {
         count = (alq.size() - 1);
     }
 
-
     public ArrayList<Integer> getAlq() {
         return alq;
     }
-
 
     public int getCount() {
         return count;
     }
 
-
     public void qs (ArrayList<Integer> alQs, int lowPos, int highPos) {
         System.out.println("in QSort.qs()");
         System.out.println("lowPos: " + lowPos + ", highPos: " + highPos);
-        printAlq(alQs);
-
         int endPos = (alQs.size() - 1);
 
         if (lowPos < highPos) {
             highPos = partition (alQs, lowPos, highPos);
-
-            System.out.println("Lower portion:  lowPos: " + lowPos +
-                    ", (highPos-1): " + (highPos-1));
+            System.out.println("Lower portion");
             qs (alQs, lowPos, (highPos-1));
-            System.out.println("After Lower portion:  highPos: " + highPos);
-            System.out.println();
-
-            System.out.println("Higher portion:  (highPos+1): " + (highPos+1) +
-                    ", highPos: " + highPos + ", endPos: " + endPos);
+            System.out.println("Higher portion");
             qs (alQs, (highPos+1), endPos);
         }
     }
-
 
     public int partition (ArrayList<Integer> alQp, int lowPos, int highPos) {
         System.out.println("in QSort.partition()");
@@ -95,10 +83,7 @@ public class QSort {
         return pvPos;
     }
 
-
     public void printAlq(ArrayList<Integer> alQs) {
-        System.out.println("in QSort.printAlq()");
-        // System.out.println("0  1  2  3  4  5  6  7  8");
         for (int i = 0; i <= count; i++){
             if (i == count) {
                 System.out.println(alQs.get(i));
@@ -108,5 +93,4 @@ public class QSort {
             }
         }
     }
-
 }
