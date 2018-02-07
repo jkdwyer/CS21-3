@@ -28,15 +28,17 @@ public class QSort {
 
     public void qs (int lowPos, int highPos) {
         System.out.println("in QSort.qs()");
-        System.out.println("lowPos: " + lowPos + ", highPos: " + highPos);
         int endPos = count;
+        int pvPos = highPos;
+        System.out.println("lowPos: " + lowPos + ", highPos: " + highPos + ", pvPos: " + pvPos);
 
         if (lowPos < highPos) {
             highPos = partition (lowPos, highPos);
             System.out.println("Lower portion");
             qs (lowPos, (highPos-1));
             System.out.println("Higher portion");
-            qs ((highPos+1), endPos);
+            qs ((pvPos+1), endPos);
+            // qs ((highPos+1), endPos);
         }
     }
 
